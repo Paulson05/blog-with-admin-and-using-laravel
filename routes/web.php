@@ -15,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('marketing');
+    return view('pages.home');
 });
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
