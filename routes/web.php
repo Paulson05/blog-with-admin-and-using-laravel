@@ -1,7 +1,9 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PostController;
+use App\Models\Category;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +22,4 @@ Route::get('/', function () {
 });
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
 Route::resource('post', PostController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destory']);
+Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destory']);

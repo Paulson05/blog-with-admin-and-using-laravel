@@ -97,16 +97,16 @@
                     <ul class="nav">
 
                         <li >
-                            <a href="pages/pricing.html">
+                            <a href="{{route('post.index')}}">
                                 <span class="sidebar-mini-icon">P</span>
-                                <span class="sidebar-normal"> Pricing </span>
+                                <span class="sidebar-normal"> Post</span>
                             </a>
                         </li>
 
                         <li >
-                            <a href="pages/rtl.html">
-                                <span class="sidebar-mini-icon">RS</span>
-                                <span class="sidebar-normal"> RTL Support </span>
+                            <a href="{{route('category.index')}}">
+                                <span class="sidebar-mini-icon">C</span>
+                                <span class="sidebar-normal">Category</span>
                             </a>
                         </li>
 
