@@ -68,91 +68,69 @@
                         <!--        Here you can write extra buttons/actions for the toolbar              -->
                     </div>
                     <div class="table-responsive">
+
                         <table id="datatable" class="table">
                             <thead class=" text-primary">
                             <th>
                                 ID
                             </th>
                             <th >
-                                title
+                                name
+                            </th>
+                            <th>
+                                ID
+                            </th>
+                            <th >
+                                name
+                            </th>
+                            <th >
+                                name
+                            </th>
+                            <th >
+                                name
                             </th>
 
-                            <th>
-                                slug
-                            </th>
-                            <th>
-                                body
-                            </th>
-                            <th>
-                                category
-                            </th>
-                            <th>
-                                image
-                            </th>
-                            <th>
-                                body
-                            </th>
-                            <th>
-                                category
-                            </th>
-                            <th>
-                                image
-                            </th>
 
                             </thead>
                             <tbody>
                             <tr>
 
-                                    <td>
-                                      kmk
-                                    </td>
-
-                                    <td>
-                                      kkl
-                                    </td>
-                                    <td>
-                                      knkjonjk
-                                    </td>
                                 <td>
-                                    kmk
+                                    name
+                                </td>
+                                <td>
+                                    name
+                                </td>
+                                <td>
+                                    name
+                                </td>
+                                <td>
+                                    name
+                                </td>
+                                <td>
+                                    name
                                 </td>
 
                                 <td>
-                                    kkl
+                                    <a href="" title="show">
+                                        <i class="btn btn-primary btn-sm fa fa-eye" ></i>
+                                    </a>
+
+                                    <a href=""  >
+                                        <i class="btn btn-success btn-sm  fa fa-edit" ></i>
+                                    </a>
+
+                                    <form style="display: inline-block" method="post" action="" >
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger  p-0"><i class="btn btn-danger btn-sm fa fa-trash" ></i></button>
+                                    </form>
+
                                 </td>
-                                <td>
-                                    knkjonjk
-                                </td>
-                                    <td>
-                                       bn  njn
-                                    </td>
-                                    <td>
-                                       bhbhbh
-                                    </td>
-                                    <td>
-{{--                                        <img  src ="/upload/images/{{$post->image}}" height= "70px;" width = "80px;">--}}
-                                    </td>
-
-                                    <td>
-                                        <a href="" title="show">
-                                            <i class="btn btn-primary btn-sm fa fa-eye" ></i>
-                                        </a>
-
-                                        <a href=""  >
-                                            <i class="btn btn-success btn-sm  fa fa-edit" ></i>
-                                        </a>
-
-                                        <form style="display: inline-block" method="post" action="" >
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger  p-0"><i class="btn btn-danger btn-sm fa fa-trash" ></i></button>
-                                        </form>
-
-                                    </td>
 
                             </tr>
 
-{{--                            @endforeach--}}
+                            {{--                            @endforeach--}}
                             </tbody>
                         </table>
                     </div>

@@ -43,7 +43,10 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>Title</strong>
-                                                            <input type="text" name="title" class="form-control" placeholder="email">
+                                                            <input type="text" name="title" class="form-control" placeholder="title" value = "{{Request::old('title') ?: ''}}">
+                                                           @error('title')
+                                                            <span class="form-text text-danger">{{$errors->first('title')}}</span>
+                                                            @enderror
 
                                                         </div>
 
@@ -51,8 +54,10 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>slug</strong>
-                                                            <input type="text" name="slug" class="form-control" placeholder="email">
-
+                                                            <input type="text" name="slug" class="form-control" placeholder="slug" value = "{{Request::old('slug') ?: ''}}">
+                                                            @error('slug')
+                                                            <span class="form-text text-danger">{{$errors->first('slug')}}</span>
+                                                            @enderror
                                                         </div>
 
                                                     </div>
@@ -61,7 +66,10 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>Category:</strong>
-                                                            <select class="form-control" name="category_id">
+                                                            <select class="form-control" name="category_id" value = "{{Request::old('category_id') ?: ''}}">
+                                                                @error('category_id')
+                                                                <span class="form-text text-danger">{{$errors->first('category_id')}}</span>
+                                                                @enderror
                                                                 <option>---select category---</option>
 {{--                                                                @foreach($categories as $category)--}}
 {{--                                                                    <option value="{{$category->id}}">{{$category->name}}</option>--}}
@@ -85,21 +93,36 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <strong>upload image</strong>
+                                                     <div class="col-md-6">
+                                                        <h4 class="card-title">Regular Image</h4>
+                                                        <div class="fileinput fileinput-new text-center" data-provides="fileinput">
+                                                            <div class="fileinput-new thumbnail">
+                                                                <img src="../../assets/img/image_placeholder.jpg" alt="...">
+                                                                {{Request::old('image') ?: ''}}
+                                                            </div>
+                                                            <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                            <div>
+                                  <span class="btn btn-rose btn-round btn-file">
+                                      <span class="fileinput-new">Select image</span>
+                                      <span class="fileinput-exists">Change</span>
+                                      <input type="file" name="image" value = "{{Request::old('image') ?: ''}}" />
+                                         @error('image')
+                                      <span class="form-text text-danger">{{$errors->first('image')}}</span>
+                                      @enderror
 
-                                                            <input type="file" name="image">
-
+                                  </span>
+                                                                <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
+                                                            </div>
                                                         </div>
-
                                                     </div>
 
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>body</strong>
-                                                            <textarea  id="mytextarea" cols="10" rows="5" placeholder="body" class="form-control" name="body"></textarea>
-
+                                                            <textarea  id="mytextarea" cols="10" rows="5" placeholder="body" class="form-control" name="body" value = "{{Request::old('body') ?: ''}}"></textarea>
+                                                            @error('body')
+                                                            <span class="form-text text-danger">{{$errors->first('body')}}</span>
+                                                            @enderror
                                                         </div>
 
                                                     </div>

@@ -73,7 +73,7 @@
 
     <link href="../assets/css/now-ui-dashboard.minaa26.css?v=1.5.0" rel="stylesheet" />
 
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
 
 
