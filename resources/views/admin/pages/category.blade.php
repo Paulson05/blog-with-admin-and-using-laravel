@@ -18,7 +18,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
-                                <h4 class="card-title">POSt</h4>
+                                <h4 class="card-title">Category</h4>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">+</a>
@@ -29,80 +29,28 @@
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Creat header Post</h4>
+                                            <h4 class="modal-title">Creat category</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
 
                                         <!-- Modal body -->
                                         <div class="modal-body ps-child">
-                                            <form action="" method="post" enctype= "multipart/form-data" >
+                                            <form action="{{route('category.store')}}" method="post" enctype= "multipart/form-data" >
                                                 @csrf
 
                                                 <div class="row">
 
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
-                                                            <strong>Title</strong>
-                                                            <input type="text" name="title" class="form-control" placeholder="email">
-
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <strong>slug</strong>
-                                                            <input type="text" name="slug" class="form-control" placeholder="email">
-
+                                                            <strong>Name</strong>
+                                                            <input type="text" name="name"  placeholder="name" class="form-control @error('name'){{"is-invalid"}}@enderror" value = "{{Request::old('name') ?: ''}}">
+                                                            @error('name')
+                                                            <span>{{$errors->first('name')}}</span>
+                                                            @enderror
                                                         </div>
 
                                                     </div>
 
-
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <strong>Category:</strong>
-                                                            <select class="form-control" name="category_id">
-                                                                <option>---select category---</option>
-                                                                {{--                                                                @foreach($categories as $category)--}}
-                                                                {{--                                                                    <option value="{{$category->id}}">{{$category->name}}</option>--}}
-                                                                {{--                                                                @endforeach--}}
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-
-
-                                                        <div class="form-group">
-                                                            <label><strong>Tags:</strong></label><br>
-                                                            {{--                                                            <select name="name[]" id="cars" multiple class="form-control custom-select">--}}
-                                                            {{--                                                                @foreach($tags as $tag)--}}
-
-
-                                                            {{--                                                                    <option value="{{$tag->id}}">{{$tag->name}}</option>--}}
-                                                            {{--                                                                @endforeach--}}
-                                                            {{--                                                            </select>--}}
-
-                                                        </div>
-
-                                                    </div>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <strong>upload image</strong>
-
-                                                            <input type="file" name="image">
-
-                                                        </div>
-
-                                                    </div>
-
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            <strong>body</strong>
-                                                            <textarea  id="mytextarea" cols="10" rows="5" placeholder="body" class="form-control" name="body"></textarea>
-
-                                                        </div>
-
-                                                    </div>
 
 
 
@@ -144,13 +92,14 @@
 
                                     </thead>
                                     <tbody>
+                                    @foreach($categorys as $category)
                                     <tr>
 
                                           <td>
-                                              id
+                                            {{$category->id}}
                                           </td>
                                         <td>
-                                            name
+                                            {{$category->name}}
                                         </td>
 
                                         <td>
@@ -162,7 +111,7 @@
                                                 <i class="btn btn-success btn-sm  fa fa-edit" ></i>
                                             </a>
 
-                                            <form style="display: inline-block" method="post" action="" >
+                                            <form style="display: inline-block" method="post" action="{{route('category.destroy', ['category' => $category->id])}}" >
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger  p-0"><i class="btn btn-danger btn-sm fa fa-trash" ></i></button>
@@ -172,7 +121,7 @@
 
                                     </tr>
 
-                                    {{--                            @endforeach--}}
+                                                                @endforeach
                                     </tbody>
                                 </table>
                             </div>

@@ -43,7 +43,7 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>Title</strong>
-                                                            <input type="text" name="title" class="form-control" placeholder="title" value = "{{Request::old('title') ?: ''}}">
+                                                            <input type="text" name="title" class="form-control @error('title'){{"is-invalid"}}@enderror" placeholder="title" value = "{{Request::old('title') ?: ''}}">
                                                            @error('title')
                                                             <span class="form-text text-danger">{{$errors->first('title')}}</span>
                                                             @enderror
@@ -54,7 +54,7 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>slug</strong>
-                                                            <input type="text" name="slug" class="form-control" placeholder="slug" value = "{{Request::old('slug') ?: ''}}">
+                                                            <input type="text" name="slug" class="form-control @error('slug'){{"is-invalid"}}@enderror" placeholder="slug" value = "{{Request::old('slug') ?: ''}}">
                                                             @error('slug')
                                                             <span class="form-text text-danger">{{$errors->first('slug')}}</span>
                                                             @enderror
@@ -66,15 +66,30 @@
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
                                                             <strong>Category:</strong>
-                                                            <select class="form-control" name="category_id" value = "{{Request::old('category_id') ?: ''}}">
-                                                                @error('category_id')
-                                                                <span class="form-text text-danger">{{$errors->first('category_id')}}</span>
-                                                                @enderror
-                                                                <option>---select category---</option>
-{{--                                                                @foreach($categories as $category)--}}
-{{--                                                                    <option value="{{$category->id}}">{{$category->name}}</option>--}}
-{{--                                                                @endforeach--}}
-                                                            </select>
+                                                           <fieldset>
+                                                               <div class="row">
+                                                                   <div class="col-lg-12 col-md-6 col-sm-3 mb-3 ">
+                                                                       <select name="category_id" class="selectpicker" data-size="7" data-style="btn btn-primary btn-round btn-block" title="Single Select">
+                                                                           <option disabled selected>Single Option</option>
+                                                                           @foreach($categorys as $category)
+                                                                           <option value="{{$category->id}}">{{$category->name}}</option>
+                                                                           @endforeach
+                                                                       </select>
+                                                                   </div>
+{{--                                                                   <div class="col-sm-10">--}}
+{{--                                                                       @foreach($categorys as $category)--}}
+{{--                                                                           <div class="form-check form-check-inline">--}}
+{{--                                                                               <label class="form-check-label">--}}
+{{--                                                                                   <input class="form-check-input" type="checkbox" value="">--}}
+{{--                                                                                   <span class="form-check-sign"></span>--}}
+{{--                                                                                   {{$category->name}}--}}
+{{--                                                                               </label>--}}
+{{--                                                                           </div>--}}
+{{--                                                                       @endforeach--}}
+
+{{--                                                                   </div>--}}
+                                                               </div>
+                                                           </fieldset>
                                                         </div>
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
@@ -105,7 +120,7 @@
                                   <span class="btn btn-rose btn-round btn-file">
                                       <span class="fileinput-new">Select image</span>
                                       <span class="fileinput-exists">Change</span>
-                                      <input type="file" name="image" value = "{{Request::old('image') ?: ''}}" />
+                                      <input type="file" name="image" class="form-control @error('image'){{"is-invalid"}}@enderror" value = "{{Request::old('image') ?: ''}}" />
                                          @error('image')
                                       <span class="form-text text-danger">{{$errors->first('image')}}</span>
                                       @enderror
@@ -157,43 +172,46 @@
                                 <table id="datatable" class="table">
                                     <thead class=" text-primary">
                                     <th>
-                                        ID
+                                        id
                                     </th>
                                     <th >
-                                        name
+                                        title
                                     </th>
                                     <th>
-                                        ID
+                                      image
+                                    </th>
+                                    <th>
+                                        slug
                                     </th>
                                     <th >
-                                        name
+                                        body
                                     </th>
                                     <th >
-                                        name
+                                        category_id
                                     </th>
-                                    <th >
-                                        name
-                                    </th>
-
 
                                     </thead>
                                     <tbody>
+                                    @foreach($posts as $post)
                                     <tr>
 
                                         <td>
-                                            name
+                                            {{$post->id}}
                                         </td>
                                         <td>
-                                            name
+                                            {{$post->title}}
                                         </td>
                                         <td>
-                                            name
+                                            <img  src ="/upload/images/{{$post->image}}" height= "70px;" width = "80px;">
                                         </td>
                                         <td>
-                                            name
+                                            {{$post->slug}}
                                         </td>
                                         <td>
-                                            name
+                                            {{$post->body}}
+                                        </td>
+                                        <td>
+                                            {{$post->category_id}}
                                         </td>
 
                                         <td>
@@ -215,7 +233,7 @@
 
                                     </tr>
 
-                                    {{--                            @endforeach--}}
+                                                                @endforeach
                                     </tbody>
                                 </table>
                             </div>

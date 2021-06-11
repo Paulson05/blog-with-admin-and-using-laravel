@@ -21,5 +21,5 @@ Route::get('/', function () {
     return view('blogpages.home');
 });
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
-Route::resource('post', PostController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destory']);
-Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destory']);
+Route::resource('post', PostController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);

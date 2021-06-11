@@ -14,7 +14,10 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return  view('admin.pages.category');
+        $categorys = Category::all();
+        return  view('admin.pages.category')->with([
+            'categorys'  => $categorys
+        ]);
     }
 
     /**
@@ -24,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -35,7 +38,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,([
+            'name' => 'required'
+        ]));
+        $array = collect($request->only(['name']))->all();
+        Category::create($array);
+        return redirect()->back();
     }
 
     /**
@@ -80,6 +88,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        //
+         $category->delete();
+         return redirect()->back();
     }
 }
