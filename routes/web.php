@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryPostController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,8 +20,24 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('blogpages.home');
+    $posts = Post::all();
+    $resentpost =  Post::orderBy('created_at', 'asc')->limit(3)->get();
+    $popularpost =  Post::inRandomOrder()->orderBy('updated_at','desc')->limit(3)->get();
+ $categories = Category::all();
+    $alltags  =Category::with(['posts'])->get();
+
+    return view('blogpages.home')->with([
+        'posts' => $posts,
+        'resentpost' => $resentpost,
+        'popularpost' =>   $popularpost,
+        'categories' => $categories,
+        'alltags' => $alltags
+
+    ]);
 });
+Route::get('categorypost/{id}', [CategoryPostController::class, 'categorypost'])->name('categorypost');
+
+
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
 Route::resource('post', PostController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
 Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);

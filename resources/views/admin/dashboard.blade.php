@@ -72,45 +72,49 @@
                         <table id="datatable" class="table">
                             <thead class=" text-primary">
                             <th>
-                                ID
+                                id
                             </th>
                             <th >
-                                name
+                                title
                             </th>
                             <th>
-                                ID
+                                image
                             </th>
                             <th >
-                                name
+                                slug
                             </th>
                             <th >
-                                name
+                                body
                             </th>
                             <th >
-                                name
+                                category
                             </th>
 
 
                             </thead>
                             <tbody>
+                            @foreach($posts as $post)
                             <tr>
 
-                                <td>
-                                    name
-                                </td>
-                                <td>
-                                    name
-                                </td>
-                                <td>
-                                    name
-                                </td>
-                                <td>
-                                    name
-                                </td>
-                                <td>
-                                    name
-                                </td>
 
+                                <td>
+                                    {{$post->id}}
+                                </td>
+                                <td>
+                                    {{$post->title}}
+                                </td>
+                                <td>
+                                    <img  src ="/upload/images/{{$post->image}}" height= "70px;" width = "80px;">
+                                </td>
+                                <td>
+                                    {{$post->slug}}
+                                </td>
+                                <td>
+                                    {{$post->body}}
+                                </td>
+                                <td>
+                                    {{$post->category_id}}
+                                </td>
                                 <td>
                                     <a href="" title="show">
                                         <i class="btn btn-primary btn-sm fa fa-eye" ></i>
@@ -130,7 +134,7 @@
 
                             </tr>
 
-                            {{--                            @endforeach--}}
+                                                        @endforeach
                             </tbody>
                         </table>
                     </div>
