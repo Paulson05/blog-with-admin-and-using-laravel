@@ -72,7 +72,7 @@
                                         </ul>
                                     </div><!-- end post-sharing -->
                                     <h4><a href="marketing4.blade.php" title="">{{$post->title}}</a></h4>
-                                    <p>{{$post->body}}</p>
+                                    <p>{{$post->body}}<span><a href="{{ route('singlepost',['post'=>$post->slug])  }}" class="text-danger" > Read More </a></span> </p>
 
                                     <small><a href="{{route('categorypost',['id'=>optional($post->category)->id])}}" title="">{{$post->category->name}}</a></small>
                                     <small><a href="marketing4.blade.php" title="">{{date ('M j, Y h:ia', strtotime($post->updated_at))}}</a></small>
