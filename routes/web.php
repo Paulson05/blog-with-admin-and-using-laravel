@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryPostController;
+use App\Http\Controllers\CommentsController;
 use App\Http\Controllers\PostController;
 use App\Models\Category;
 use App\Models\Post;
@@ -42,3 +43,5 @@ Route::get('singlepost/{post:slug}', [BlogController::class, 'singlepost'])->nam
 Route::get('admin', [AdminController::class, 'admin'])->name('admin');
 Route::resource('post', PostController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
 Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+Route::resource('comments', CommentsController::class)->only(['index','store','show','update','destroy','edit',  ]);
+
