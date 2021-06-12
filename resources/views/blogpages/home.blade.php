@@ -1,39 +1,6 @@
 @extends('blogpages.templete.defaults')
 @section('content')
 <div id="wrapper">
-    <header class="market-header header">
-        <div class="container-fluid">
-            <nav class="navbar navbar-toggleable-md navbar-inverse fixed-top bg-inverse">
-                <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <a class="navbar-brand" href="marketing3.blade.php"><img src="images/version/market-logo.png" alt=""></a>
-                <div class="collapse navbar-collapse" id="navbarCollapse">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing3.blade.php">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing2.blade.php">Marketing</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing2.blade.php">Make Money</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing.blade.php">Blog</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="marketing-contact.html">Contact Us</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline">
-                        <input class="form-control mr-sm-2" type="text" placeholder="How may I help?">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                    </form>
-                </div>
-            </nav>
-        </div><!-- end container-fluid -->
-    </header><!-- end market-header -->
 
 
 
@@ -68,7 +35,7 @@
                                         <ul class="list-inline">
                                             <li><a href="#" class="fb-button btn btn-primary"><i class="fa fa-facebook"></i> <span class="down-mobile">Share on Facebook</span></a></li>
                                             <li><a href="#" class="tw-button btn btn-primary"><i class="fa fa-twitter"></i> <span class="down-mobile">Tweet on Twitter</span></a></li>
-                                            <li><a href="#" class="gp-button btn btn-primary"><i class="fa fa-google-plus"></i></a></li>
+                                            <li><a href="#" class="gp-button btn btn-primary" style="color: green !important; background-color: #0069d9 !important;"><i class="fa fa-whatsapp"></i></a></li>
                                         </ul>
                                     </div><!-- end post-sharing -->
                                     <h4><a href="marketing4.blade.php" title="">{{$post->title}}</a></h4>
