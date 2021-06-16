@@ -111,23 +111,23 @@
                         </li>
 
                         <li >
-                            <a href="pages/invoice.html">
-                                <span class="sidebar-mini-icon">I</span>
-                                <span class="sidebar-normal"> Invoice </span>
+                            <a href="{{route('role.index')}}">
+                                <span class="sidebar-mini-icon">R</span>
+                                <span class="sidebar-normal"> Role </span>
                             </a>
                         </li>
 
                         <li >
-                            <a href="pages/timeline.html">
-                                <span class="sidebar-mini-icon">T</span>
-                                <span class="sidebar-normal"> Timeline </span>
+                            <a href="{{route('permission.index')}}">
+                                <span class="sidebar-mini-icon">P</span>
+                                <span class="sidebar-normal">Permission</span>
                             </a>
                         </li>
 
                         <li >
-                            <a href="pages/login.html">
-                                <span class="sidebar-mini-icon">L</span>
-                                <span class="sidebar-normal"> Login </span>
+                            <a href="{{route('user.index')}}">
+                                <span class="sidebar-mini-icon">U</span>
+                                <span class="sidebar-normal"> Users </span>
                             </a>
                         </li>
 

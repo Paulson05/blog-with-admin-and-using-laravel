@@ -5,7 +5,10 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\CategoryPostController;
 use App\Http\Controllers\CommentsController;
+use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\RoleController;
+use App\Http\Controllers\UserController;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Support\Facades\Route;
@@ -45,3 +48,14 @@ Route::resource('post', PostController::class)->only(['index', 'create', 'store'
 Route::resource('category', CategoryController::class)->only(['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
 Route::resource('comments', CommentsController::class)->only(['index','store','show','update','destroy','edit',  ]);
 
+Route::resource('role', RoleController::class)->only(['index','store','show','update','destroy','edit', 'create'  ]);
+Route::resource('permission', PermissionController::class)->only(['index','store','show','update','destroy','edit', 'create'  ]);
+Route::resource('user', UserController::class)->only(['index','store','show','update','destroy','edit', 'create'  ]);
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
