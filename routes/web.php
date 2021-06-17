@@ -53,7 +53,7 @@ Route::resource('role', RoleController::class)->only(['index','store','show','up
 Route::resource('permission', PermissionController::class)->only(['index','store','show','update','destroy','edit', 'create'  ]);
 Route::resource('user', UserController::class)->only(['index','store','show','update','destroy','edit', 'create'  ]);
 
-Auth::routes();
+
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class HomeController extends Controller
 {
@@ -23,6 +25,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $users = User::all();
+        $roles = Role::all();
+        return view('home')->with([
+            'users'=> $users,
+            'roles' => $roles
+        ]);
     }
 }

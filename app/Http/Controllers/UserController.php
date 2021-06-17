@@ -16,10 +16,10 @@ use Spatie\Permission\Models\Permission;
 use Session;
 
 class UserController extends Controller {
-
-    public function __construct() {
-        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
-    }
+//
+//    public function __construct() {
+//        $this->middleware(['auth', 'isAdmin']); //isAdmin middleware lets only users with a //specific permission permission to access these resources
+//    }
 
     /**
      * Display a listing of the resource.
@@ -51,11 +51,14 @@ class UserController extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         //Validate name, email and password fields
         $this->validate($request, [
             'name'=>'required|max:120',
             'email'=>'required|email|unique:users',
-            'password'=>'required|min:6|confirmed'
+//            'password' => 'min:6|required_with:password_confirmation|same:password_confirmation',
+            'password' => 'required|same:confirmed_password',
+            'confirmed_password' => 'required|same:password',
         ]);
 
         $user = User::create($request->only('email', 'name', 'password')); //Retrieving only the email and password data
@@ -70,7 +73,7 @@ class UserController extends Controller {
             }
         }
         //Redirect to the users.index view and display message
-        return redirect()->route('users.index')
+        return redirect()->route('user.index')
             ->with('flash_message',
                 'User successfully added.');
     }

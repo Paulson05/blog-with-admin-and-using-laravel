@@ -52,7 +52,7 @@
                                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                                             <div class="form-group">
                                                                 <strong>Email</strong>
-                                                                <input type="text" name="emal" class="form-control @error('email'){{"is-invalid"}}@enderror" placeholder="email" value = "{{Request::old('email') ?: ''}}">
+                                                                <input type="text" name="email" class="form-control @error('email'){{"is-invalid"}}@enderror" placeholder="email" value = "{{Request::old('email') ?: ''}}">
                                                                 @error('email')
                                                                 <span class="form-text text-danger">{{$errors->first('email')}}</span>
                                                                 @enderror
@@ -64,7 +64,7 @@
                                                         <div  class="col-xs-12 col-sm-12 col-md-12">
                                                             <div class="checkbox">
                                                                 @foreach ($roles as $role)
-                                                                    <input type="checkbox" name="roles[]" value="{{ $role->id }}" checked>
+                                                                    <input type="checkbox" name="roles[]" value="{{ $role->id }}" >
                                                                     <label>
                                                                         {{ ucfirst($role->name) }}
                                                                     </label>
@@ -86,10 +86,10 @@
                                                         </div>
                                                         <div class="col-xs-12 col-sm-12 col-md-12">
                                                             <div class="form-group">
-                                                                <strong>confirm-Paswword</strong>
-                                                                <input type="password" name="password" class="form-control @error('password'){{"is-invalid"}}@enderror" placeholder="password" value = "{{Request::old('password') ?: ''}}">
-                                                                @error('password')
-                                                                <span class="form-text text-danger">{{$errors->first('password')}}</span>
+                                                                <label>Comfirm Password</label>
+                                                                <input type="password" name="confirmed_password" class="form-control @error('confirmed_password'){{"is-invalid"}}@enderror" value = "{{Request::old('cpnfirmed_password') ?: ''}}">
+                                                                @error('confirmed_password')
+                                                                <span class="form-text text-danger">{{$errors->first('confirmed_password')}}</span>
                                                                 @enderror
 
                                                             </div>
@@ -125,19 +125,20 @@
                                 <table id="datatable" class="table">
                                     <thead class=" text-primary">
                                     <th>
-                                        id
-                                    </th>
-                                    <th >
                                         name
                                     </th>
-                                    <th>
+                                    <th >
                                         email
                                     </th>
                                     <th>
                                         date created
                                     </th>
+                                    <th>
+                                        User role
+                                    </th>
                                     <th >
-                                       User role
+                                    action.
+
                                     </th>
 
                                     </thead>

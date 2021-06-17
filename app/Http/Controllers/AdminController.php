@@ -13,4 +13,5 @@ class AdminController extends Controller
             'posts' => $posts
         ]);
     }
+
 }
