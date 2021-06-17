@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 
-use App\User;
+
 use Auth;
 
 //Importing laravel-permission models
@@ -28,7 +29,12 @@ class UserController extends Controller {
     public function index() {
         //Get all users and pass it to the view
         $users = User::all();
-        return view('admin.user.index')->with('users', $users);
+        $roles = Role::all();
+         return view('admin.user.index')->with([
+             'users'=> $users,
+             'roles' => $roles
+
+         ]);
     }
 
     /**
@@ -36,11 +42,7 @@ class UserController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        //Get all roles and pass it to the view
-        $roles = Role::get();
-        return view('users.create', ['roles'=>$roles]);
-    }
+
 
     /**
      * Store a newly created resource in storage.
