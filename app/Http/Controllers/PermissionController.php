@@ -19,9 +19,10 @@ class PermissionController extends Controller
     {
 
         $permissions = Permission::all(); //Get all permissions
-
+        $roles = Role::get(); //Get all roles
         return view('admin.permission.index')->with([
-            'permissions'=> $permissions
+            'permissions'=> $permissions,
+            'roles' => $roles
         ]);
 
     }
@@ -31,10 +32,7 @@ class PermissionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -42,9 +40,33 @@ class PermissionController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(Request $request) {
+
+        $this->validate($request, [
+            'name'=>'required|max:40',
+        ]);
+
+        $name = $request['name'];
+        $permission = new Permission();
+        $permission->name = $name;
+
+        $roles = $request['roles'];
+
+        $permission->save();
+
+        if (!empty($request['roles'])) { //If one or more role is selected
+            foreach ($roles as $role) {
+                $r = Role::where('id', '=', $role)->firstOrFail(); //Match input role to db record
+
+                $permission = Permission::where('name', '=', $name)->first(); //Match input //permission to db record
+                $r->givePermissionTo($permission);
+            }
+        }
+
+        return redirect()->route('permission.index')
+            ->with('flash_message',
+                'Permission'. $permission->name.' added!');
+
     }
 
     /**

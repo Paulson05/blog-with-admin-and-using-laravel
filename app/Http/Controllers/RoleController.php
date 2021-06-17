@@ -43,10 +43,11 @@ class RoleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request) {
+
         //Validate name and permissions field
         $this->validate($request, [
                 'name'=>'required|unique:roles|max:10',
-                'permissions' =>'required',
+
             ]
         );
 
@@ -54,18 +55,18 @@ class RoleController extends Controller
         $role = new Role();
         $role->name = $name;
 
-        $permissions = $request['permissions'];
+
 
         $role->save();
         //Looping thru selected permissions
-        foreach ($permissions as $permission) {
-            $p = Permission::where('id', '=', $permission)->firstOrFail();
-            //Fetch the newly created role and assign permission
-            $role = Role::where('name', '=', $name)->first();
-            $role->givePermissionTo($p);
-        }
+//        foreach ($permissions as $permission) {
+//            $p = Permission::where('id', '=', $permission)->firstOrFail();
+//            //Fetch the newly created role and assign permission
+//            $role = Role::where('name', '=', $name)->first();
+//            $role->givePermissionTo($p);
+//        }
 
-        return redirect()->route('roles.index')
+        return redirect()->route('role.index')
             ->with('flash_message',
                 'Role'. $role->name.' added!');
     }

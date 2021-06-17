@@ -35,7 +35,7 @@
 
                                         <!-- Modal body -->
                                         <div class="modal-body ps-child">
-                                            <form action="" method="post" enctype= "multipart/form-data" >
+                                            <form action="{{route('role.store')}}" method="post" enctype= "multipart/form-data" >
                                                 @csrf
 
                                                 <div class="row">
@@ -51,21 +51,21 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
-                                                            @foreach ($permissions as $permission)
+{{--                                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
+{{--                                                        <div class="form-group">--}}
+{{--                                                            @foreach ($permissions as $permission)--}}
 
-                                                                <div class="checkbox">
-                                                                    <label>
-                                                                        {{ ucfirst($permission->name) }}
-                                                                    </label>
-                                                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }} {{($role->permissions == $permission->id) ? 'checked' : ''}}">
-                                                                    <br>
-                                                                </div>
+{{--                                                                <div class="checkbox">--}}
+{{--                                                                    <label>--}}
+{{--                                                                        {{ ucfirst($permission->name) }}--}}
+{{--                                                                    </label>--}}
+{{--                                                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }} {{($role->permissions == $permission->id) ? 'checked' : ''}}">--}}
+{{--                                                                    <br>--}}
+{{--                                                                </div>--}}
 
-                                                            @endforeach
-                                                        </div>
-                                                    </div>
+{{--                                                            @endforeach--}}
+{{--                                                        </div>--}}
+{{--                                                    </div>--}}
 
 
 

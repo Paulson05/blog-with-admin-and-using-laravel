@@ -106,14 +106,14 @@
 
                                     </thead>
                                     <tbody>
-{{--                                    @foreach($posts as $post)--}}
+                                    @foreach($permissions as $permission)
                                         <tr>
 
                                             <td>
-{{--                                                {{$post->id}}--}}
+                                                {{$permission->id}}
                                             </td>
                                             <td>
-{{--                                                {{$post->title}}--}}
+                                                {{$permission->name}}
                                             </td>
 
 
@@ -136,7 +136,7 @@
 
                                         </tr>
 
-{{--                                    @endforeach--}}
+                                    @endforeach
                                     </tbody>
                                 </table>
                             </div>
