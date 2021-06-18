@@ -18,7 +18,7 @@
                     <div class="card-header">
                         <div class="row">
                             <div class="col-8">
-                                <h4 class="card-title">Permissions</h4>
+                                <h1><i class='fa fa-key'></i> Add Permission</h1>
                             </div>
                             <div class="col-4 text-right">
                                 <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#myModal">+</a>
@@ -29,7 +29,7 @@
 
                                         <!-- Modal Header -->
                                         <div class="modal-header">
-                                            <h4 class="modal-title">Creat Permission</h4>
+                                            <h4 class="modal-title">Add Permission</h4>
                                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                                         </div>
 
@@ -53,6 +53,8 @@
                                                     </div>
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
                                                         <div class="form-group">
+                                                            @if(!$roles->isEmpty()) //If no roles exist yet
+                                                            <h4>Assign Permission to Roles</h4>
                                                             @foreach ($roles as $role)
 
                                                             <div class="checkbox">
@@ -64,6 +66,7 @@
                                                                 </div>
 
                                                             @endforeach
+                                                                @endif
                                                         </div>
                                                     </div>
 

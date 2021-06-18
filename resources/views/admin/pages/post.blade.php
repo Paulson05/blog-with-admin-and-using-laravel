@@ -226,8 +226,11 @@
                                             <form style="display: inline-block" method="post" action="" >
                                                 @csrf
                                                 @method('DELETE')
+
                                                 <button type="submit" class="btn btn-danger  p-0"><i class="btn btn-danger btn-sm fa fa-trash" ></i></button>
+
                                             </form>
+
 
                                         </td>
 
