@@ -51,21 +51,23 @@
                                                         </div>
 
                                                     </div>
-{{--                                                    <div class="col-xs-12 col-sm-12 col-md-12">--}}
-{{--                                                        <div class="form-group">--}}
-{{--                                                            @foreach ($permissions as $permission)--}}
+                                                    <div class="col-xs-12 col-sm-12 col-md-12">
+                                                        <div class="form-group">
 
-{{--                                                                <div class="checkbox">--}}
-{{--                                                                    <label>--}}
-{{--                                                                        {{ ucfirst($permission->name) }}--}}
-{{--                                                                    </label>--}}
-{{--                                                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id }} {{($role->permissions == $permission->id) ? 'checked' : ''}}">--}}
-{{--                                                                    <br>--}}
-{{--                                                                </div>--}}
+                                                            <h5><b>Assign Permissions</b></h5>
+                                                            @foreach ($permissions as $permission)
 
-{{--                                                            @endforeach--}}
-{{--                                                        </div>--}}
-{{--                                                    </div>--}}
+                                                                <div class="checkbox">
+                                                                    <label>
+                                                                        {{ ucfirst($permission->name) }}
+                                                                    </label>
+                                                                    <input type="checkbox" name="permissions[]" value="{{ $permission->id}}">
+                                                                    <br>
+                                                                </div>
+
+                                                            @endforeach
+                                                        </div>
+                                                    </div>
 
 
 
@@ -96,25 +98,21 @@
                                 <table id="datatable" class="table">
                                     <thead class=" text-primary">
                                     <th>
-                                        id
+                                        role
                                     </th>
                                     <th >
-                                        name
+                                        permission
                                     </th>
 
                                     </thead>
+
                                     <tbody>
-                                    @foreach($roles as $role)
+                                    @foreach ($roles as $role)
                                         <tr>
 
-                                            <td>
-                                                {{$role->id}}
-                                            </td>
-                                            <td>
-                                                {{$role->name}}
-                                            </td>
+                                            <td>{{ $role->name }}</td>
 
-
+                                            <td>{{ str_replace(array('[',']','"'),'', $role->permissions()->pluck('name')) }}</td>{{-- Retrieve array of permissions associated to a role and convert to string --}}
                                             <td>
                                                 <a href="" title="show">
                                                     <i class="btn btn-primary btn-sm fa fa-eye" ></i>
@@ -131,9 +129,7 @@
                                                 </form>
 
                                             </td>
-
                                         </tr>
-
                                     @endforeach
                                     </tbody>
                                 </table>
