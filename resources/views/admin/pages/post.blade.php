@@ -41,7 +41,7 @@
                                                 <div class="row">
 
                                                     <div class="col-xs-12 col-sm-12 col-md-12">
-                                                        <div class="form-group">
+                                                        <div class="form-group col-xs-12 col-sm-12 col-md-12">
                                                             <strong>Title</strong>
                                                             <input type="text" name="title" class="form-control @error('title'){{"is-invalid"}}@enderror" placeholder="title" value = "{{Request::old('title') ?: ''}}">
                                                            @error('title')
@@ -117,15 +117,15 @@
                                                             </div>
                                                             <div class="fileinput-preview fileinput-exists thumbnail"></div>
                                                             <div>
-                                  <span class="btn btn-rose btn-round btn-file">
-                                      <span class="fileinput-new">Select image</span>
-                                      <span class="fileinput-exists">Change</span>
-                                      <input type="file" name="image" class="form-control @error('image'){{"is-invalid"}}@enderror" value = "{{Request::old('image') ?: ''}}" />
-                                         @error('image')
-                                      <span class="form-text text-danger">{{$errors->first('image')}}</span>
-                                      @enderror
+                                                              <span class="btn btn-rose btn-round btn-file">
+                                                                  <span class="fileinput-new">Select image</span>
+                                                                  <span class="fileinput-exists">Change</span>
+                                                                  <input type="file" name="image" class="form-control @error('image'){{"is-invalid"}}@enderror" value = "{{Request::old('image') ?: ''}}" />
+                                                                     @error('image')
+                                                                  <span class="form-text text-danger">{{$errors->first('image')}}</span>
+                                                                  @enderror
 
-                                  </span>
+                                                              </span>
                                                                 <a href="#pablo" class="btn btn-danger btn-round fileinput-exists" data-dismiss="fileinput"><i class="fa fa-times"></i> Remove</a>
                                                             </div>
                                                         </div>
