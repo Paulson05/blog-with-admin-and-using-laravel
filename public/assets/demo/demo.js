@@ -1091,7 +1091,7 @@ demo = {
       	});
 
 
-        // Prepare the preview for profile picture
+        // Prepare the preview for procfile picture
         $("#wizard-picture").change(function(){
             readURL(this);
         });
